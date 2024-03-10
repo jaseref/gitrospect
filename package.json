@@ -38,6 +38,7 @@
   "type": "module",
   "dependencies": {
     "@sveltejs/adapter-static": "^3.0.1",
+    "@tauri-apps/api": "^1.5.3",
     "clsx": "^2.1.0",
     "svelte-radix": "^1.0.3",
     "tailwind-merge": "^2.2.1",
