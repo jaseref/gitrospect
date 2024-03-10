@@ -6,9 +6,25 @@
     "printWidth": 100,
     "semi": true,
     "endOfLine": "lf",
-    "plugins": ["prettier-plugin-svelte"],
+    "plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
     "overrides": [
-        { "files": "*.svelte", "options": { "parser": "svelte" } },
-        { "files": "*.json", "options": { "tabWidth": 2 } }
+        {
+            "files": "*.svelte",
+            "options": {
+                "parser": "svelte"
+            }
+        },
+        {
+            "files": "*.json",
+            "options": {
+                "tabWidth": 2
+            }
+        },
+        {
+            "files": "app.pcss",
+            "options": {
+                "tabWidth": 2
+            }
+        }
     ]
 }
