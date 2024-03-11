@@ -7,12 +7,16 @@
     "distDir": "../build"
   },
   "package": {
-    "productName": "gitrospect",
+    "productName": "Gitrospect",
     "version": "0.1.0"
   },
   "tauri": {
     "allowlist": {
-      "all": false
+      "all": false,
+      "dialog": {
+        "ask": true,
+        "open": true
+      }
     },
     "bundle": {
       "active": true,
