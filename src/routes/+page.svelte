@@ -2,7 +2,7 @@
     import { Button } from '$lib/components/ui/button';
     import { open } from '@tauri-apps/api/dialog';
     import { selectedRepo } from '$lib/stores';
-    // import { goto } from '$app/navigation';
+    import { goto } from '$app/navigation';
 
     async function onClick() {
         const folderPath = await open({
@@ -14,8 +14,7 @@
         if (typeof folderPath === 'string') {
             console.log('Setting path: ', folderPath);
             selectedRepo.set(folderPath);
-            // TODO: Redirect user
-            // goto("/repo");
+            goto('/repo');
         }
     }
 </script>
