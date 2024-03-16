@@ -12,9 +12,13 @@
 
     let branches: Branch[] = [];
     async function loadGitData() {
-        let repo: Repository = await invoke('load_git_data', { path: repoPath });
-        branches = repo.branches;
-        console.log(branches);
+        try {
+            let repo: Repository = await invoke('load_repo', { path: repoPath });
+            branches = repo.branches;
+            console.log(branches);
+        } catch (e) {
+            console.log('Got an error: ', e);
+        }
     }
 
     type Branch = {

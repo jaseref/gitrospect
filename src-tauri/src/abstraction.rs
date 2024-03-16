@@ -1,9 +1,5 @@
+#![allow(unused)]
 use serde::{Deserialize, Serialize};
-
-#[derive(Debug, Default, Serialize, Deserialize)]
-pub struct Repo {
-    pub branches: Vec<Branch>,
-}
 
 /// A tree object represents a directory in the repository. It contains references to other tree 
 /// objects (subdirectories) and blob objects (files).
