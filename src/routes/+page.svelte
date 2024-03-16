@@ -3,6 +3,8 @@
     import { open } from '@tauri-apps/api/dialog';
     import { selectedRepo } from '$lib/stores';
     import { goto } from '$app/navigation';
+    import type { Repository } from '$lib/types/repository';
+    import { invoke } from '@tauri-apps/api';
 
     async function onClick() {
         const folderPath = await open({
@@ -12,9 +14,16 @@
         });
 
         if (typeof folderPath === 'string') {
-            console.log('Setting path: ', folderPath);
-            selectedRepo.set(folderPath);
-            goto('/repo');
+            console.log('Got path: ', folderPath);
+            try {
+                let repo: Repository = await invoke('load_repo', { path: folderPath });
+                console.log('Got repo: ', repo);
+                selectedRepo.set(repo);
+                goto('/repo');
+            } catch (e) {
+                // TODO: Display error banner
+                console.error('Backend Error: ', e);
+            }
         }
     }
 </script>
