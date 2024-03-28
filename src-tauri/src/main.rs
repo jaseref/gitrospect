@@ -1,8 +1,8 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+use repo::Repo;
 use serde::{ser::Serializer, Serialize};
-use repo::{Repo, RepoBuilder};
 use thiserror::Error;
 
 mod abstraction;
@@ -17,10 +17,8 @@ fn main() {
 
 #[tauri::command]
 fn load_repo(path: String) -> CommandResult<Repo> {
-    let repo_state = RepoBuilder::new(&path)?
-        .with_branches()?
-        .build();
-    println!("{repo_state:?}");
+    let repo_state = Repo::new(&path)?;
+    // println!("{repo_state:?}");
     Ok(repo_state)
 }
 
